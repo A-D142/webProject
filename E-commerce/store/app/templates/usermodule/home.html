@@ -3,5 +3,17 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-    <h1>home page</h1>
+    <h1>List of product</h1>
+    <table border='1'>
+        <tr>
+            <th>Product name</th>
+            <th>company</th>
+        </tr>
+        {% for p in product %}
+            <tr>
+                <td><a href='product/{{p.id}}'>{{p.pname}}</a></td>
+                <td>{{p.company}}</td>
+            </tr>
+            {% endfor %}
+    </table>
 {% endblock content %}
