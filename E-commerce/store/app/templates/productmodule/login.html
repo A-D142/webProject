@@ -5,9 +5,9 @@
 {% block content %}
     <form method='post'>{% csrf_token %}
         <label>username</label>
-        <input type='text'><br>
+        <input type='text' name = 'username'><br>
         <label>password</label>
-        <input type='password'><br>
+        <input type='password' name = 'password'><br>
         <input type='submit'>
     </form>
 {% endblock content %}

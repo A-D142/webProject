@@ -1,6 +1,6 @@
 from django.db import models
 
-class customer(models.Model):
+class customers(models.Model):
     f_name = models.CharField(max_length = 20)
     l_name = models.CharField(max_length = 20)
     phone = models.BigIntegerField(default = 0000000000)
@@ -9,7 +9,7 @@ class customer(models.Model):
     password = models.CharField(max_length = 20)
     
 
-class add_product(models.Model):
+class products(models.Model):
     id = models.BigAutoField(primary_key = True)
     p_name = models.CharField(max_length = 20)
     company = models.CharField(max_length = 20)
