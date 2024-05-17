@@ -1,8 +1,32 @@
 {% extends "layout/base.html" %}
-
+{% load static %}
 {% block title %}Home{% endblock title %}
 
 {% block content %}
+{% block stylesheets %}
+    <link rel = 'stylesheet' href = "{% static 'CSS/home.css' %}">
+{% endblock stylesheets %}
+
+    <div class='product-continar'>
+        <h1>PRODUCTS</h1>
+    </div>
+    <div class='products-cards'>
+        {% for p in product%}
+        <div class='card'>
+            <img class='card-img' src="{% static '/image/demo.png' %}" />
+            <div class='card-info'>
+                <div class='card-name'>
+                    <p>{{p.company}}</p>
+                    <h3>{{p.p_name}}</h3>
+                </div> 
+                <a href='product/1'>
+                    <img class='card-cart' src="{% static '/image/cart.png' %}"/>
+                </a>                   
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% comment %}
     <h1>List of product</h1>
     <table border='1'>
         <tr>
@@ -16,4 +40,6 @@
             </tr>
             {% endfor %}
     </table>
+    {% endcomment %}
+    
 {% endblock content %}

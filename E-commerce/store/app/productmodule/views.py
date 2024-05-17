@@ -5,6 +5,9 @@ from .forms import customersForm, productsForm
 def home(request):
     return render(request, 'productmodule/home.html', {'product': __getproduct()})
 
+def cart(request):
+    return render(request, 'productmodule/cart.html')
+
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -58,7 +61,7 @@ def updateproduct(request, id):
             obj.save()
             return redirect('product', id = obj.id)
     form = productsForm(instance=obj)        
-    return render(request, 'productmodule/updateproduct.html', {'form':form})
+    return render(request, 'productmodule/updateproduct.html', {'form':form})         
 
 def __getproduct():
     allproducts = products.objects.filter()

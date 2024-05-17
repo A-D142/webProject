@@ -1,1 +1,14 @@
-<h4>sid1</h4>
+{% load static %}
+{% block stylesheet%}
+    <link rel = 'stylesheet' href = "{% static 'CSS/sidebar.css' %}">
+{% endblock stylesheet%}
+<div class = 'sidebar'>
+    <div class = 'sidebar-left-section'>
+        <span>Welcome to my store</span>
+        <h1>here you will find the best deals!</h1>
+        <p>Quidem voluptate impedit blanditiis eius ea officiis aliquam unde repellendus in? Fuga atque et quae voluptates vitae? Magni corrupti suscipit repellat expedita dignissimos sunt repellendus, sint et cumque at saepe enim nam optio eveniet reprehenderit, excepturi id odio, illo porro assumenda ab perspiciatis eaque ipsam impedit fugiat. Iste doloribus eligendi.</p>
+    </div>
+    <div>
+        <img class = 'sideimg' src = "{% static '/image/demo.png' %}" alt="product image"/>
+    </div>
+</div>

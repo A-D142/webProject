@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+}
+.logo{
+    width: 150px;
+    height: 150px;
+}
+.headerbase{
+    background-color: rgb(6, 172, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+}
+.links a{
+    font-size: 20px;
+    color: black;
+    padding: 5px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+}
+.links a:hover{
+    background-color: rgb(68, 187, 247);
+}
+.sign{
+    background-color: orange;
+}

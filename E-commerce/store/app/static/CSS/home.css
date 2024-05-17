@@ -1,0 +1,32 @@
+.product-continar{
+    padding: 25px 50px;
+}
+.products-cards{
+    padding: 0px 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.card{
+    margin: 15px 0px;
+    width: 300px;
+    background: rgb(201, 201, 201);
+    border-radius: 20px;
+}
+.card-img{
+    width: 300px;
+    border-radius: 20px 20px 0px 0px;
+}
+.card-cart{
+    width: 100px;
+}
+.card-cart:hover{
+    background-color: rgb(174, 174, 174);
+    border-radius: 25px;
+}
+.card-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 5px 0px 20px;
+}
