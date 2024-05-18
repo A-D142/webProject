@@ -1,8 +1,11 @@
-{% extends "layout/base.html" %}
-
+{% extends "layout/base2.html" %}
+{% load static %}
 {% block title %}login{% endblock title %}
 
 {% block content %}
+{% block stylesheet %}
+    <link rel = 'stylesheet' href = "{% static 'CSS/addproduct.css' %}">
+{% endblock stylesheet %}
     <form method='post'>{% csrf_token %}
         <label>username</label>
         <input type='text' name = 'username'><br>

@@ -18,28 +18,12 @@
                 <div class='card-name'>
                     <p>{{p.company}}</p>
                     <h3>{{p.p_name}}</h3>
-                </div> 
-                <a href='product/1'>
-                    <img class='card-cart' src="{% static '/image/cart.png' %}"/>
-                </a>                   
+                </div>
+                <form method='post'>{% csrf_token %}
+                    <button type=submit name='dataproduct' value="{{p.id}}"><img class='card-cart' src="{% static '/image/cart.png' %}"/></button>
+                </form>                  
             </div>
         </div>
         {% endfor %}
-    </div>
-    {% comment %}
-    <h1>List of product</h1>
-    <table border='1'>
-        <tr>
-            <th>Product name</th>
-            <th>company</th>
-        </tr>
-        {% for p in product %}
-            <tr>
-                <td><a href='product/{{p.id}}'>{{p.p_name}}</a></td>
-                <td>{{p.company}}</td>
-            </tr>
-            {% endfor %}
-    </table>
-    {% endcomment %}
-    
+    </div>    
 {% endblock content %}

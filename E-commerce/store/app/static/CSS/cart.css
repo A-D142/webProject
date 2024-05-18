@@ -1,0 +1,28 @@
+.cart-base{
+    margin: 5px 200px;
+
+}
+.cart-paner p{
+    width: 200px;
+}
+.cart-card{
+    display: flex;
+    border-radius: 25px;
+    padding-left: 10px;
+    justify-content: space-between;
+    background: lightgrey;
+    margin: 15px 0px;
+}
+.cart-card-content{
+    width: 200px;
+}
+.cart-card button{
+    background-color: red;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    color: white;
+}
+.cart-card button:hover{
+    background-color: rgb(255, 129, 129);
+}

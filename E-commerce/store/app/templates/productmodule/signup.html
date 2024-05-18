@@ -1,8 +1,11 @@
-{% extends "layout/base.html" %}
-
+{% extends "layout/base2.html" %}
+{% load static %}
 {% block title %}Signup{% endblock title %}
 
 {% block content %}
+{% block stylesheet %}
+    <link rel = 'stylesheet' href = "{% static 'CSS/addproduct.css' %}">
+{% endblock stylesheet %}
     <form method='post'>{% csrf_token %}
         <label>First Name</label>
         <input type='text' name='f_name'><br>

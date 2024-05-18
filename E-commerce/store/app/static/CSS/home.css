@@ -13,6 +13,10 @@
     background: rgb(201, 201, 201);
     border-radius: 20px;
 }
+.card button{
+    border: none; 
+    background-color: transparent;
+}
 .card-img{
     width: 300px;
     border-radius: 20px 20px 0px 0px;
@@ -29,4 +33,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 0px 5px 0px 20px;
+}
+.footerbase{
+    width: 200px;
+    background: rgb(6, 172, 255);
 }

@@ -1,7 +1,32 @@
-{% extends "layout/base.html" %}
+{% extends "layout/base2.html" %}
+{% load static %}
 
 {% block title %}cart{% endblock title %}
 
 {% block content %}
-
+{% block stylesheet %}
+    <link rel = 'stylesheet' href = "{% static 'CSS/cart.css' %}"/>
+{% endblock stylesheet %}
+    <div class="cart-base">
+        <div>
+            <h2>Shopping cart</h2>
+            <div class='cart-card'>
+                <p class='cart-card-content'>Products</p>
+                <p class='cart-card-content'>Count</p>
+                <p class='cart-card-content'>Price</p>
+                <p class='cart-card-content'></p>
+            </div>
+             
+        </div>
+        {%for p in product%}
+        <div class='cart-card'>
+            <p class='cart-card-content'>{{p.p_name}}</p>
+            <p class='cart-card-content'>{{p.p_count}}</p>
+            <p class='cart-card-content'>{{p.price}}</p> 
+            <form method='post'>{% csrf_token %}
+                <button name='dataproduct' value="{{p.id}}" class='cart-card-content' type=submit>DELETE</button>
+            </form>         
+        </div>
+        {% endfor %}
+    </div>
 {% endblock content%}

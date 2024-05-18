@@ -1,12 +1,22 @@
 from django.shortcuts import render, redirect
-from .models import customers, products
+from .models import customers, products, carts
 from .forms import customersForm, productsForm
 
 def home(request):
+    if request.method == 'POST':
+        pid = request.POST.get("dataproduct", "")
+        obj = products.objects.get(id = pid)
+        data = carts(p_name = obj.p_name, p_count = 1, price = obj.price)
+        data.save()
     return render(request, 'productmodule/home.html', {'product': __getproduct()})
 
 def cart(request):
-    return render(request, 'productmodule/cart.html')
+    if request.method == 'POST':
+        pid = request.POST.get("dataproduct", "")
+        obj = carts.objects.get(id = pid)
+        obj.delete()
+    obj = carts.objects.all() 
+    return render(request, 'productmodule/cart.html',{'product': obj})
 
 def login(request):
     if request.method == 'POST':
@@ -64,5 +74,5 @@ def updateproduct(request, id):
     return render(request, 'productmodule/updateproduct.html', {'form':form})         
 
 def __getproduct():
-    allproducts = products.objects.filter()
+    allproducts = products.objects.all()
     return allproducts

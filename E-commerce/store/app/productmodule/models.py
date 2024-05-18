@@ -14,5 +14,12 @@ class products(models.Model):
     p_name = models.CharField(max_length = 20)
     company = models.CharField(max_length = 20)
     p_count = models.IntegerField()
-    img_num = models.IntegerField()
+    price = models.IntegerField()
+    
+    
+class carts(models.Model):
+    id = models.BigAutoField(primary_key = True)
+    p_name = models.CharField(max_length = 20)
+    p_count = models.IntegerField(default=None)
+    price = models.IntegerField()
     
