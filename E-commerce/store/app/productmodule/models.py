@@ -19,7 +19,8 @@ class products(models.Model):
     
 class carts(models.Model):
     id = models.BigAutoField(primary_key = True)
+    p_id = models.IntegerField(default = 0)
     p_name = models.CharField(max_length = 20)
-    p_count = models.IntegerField(default=None)
+    p_count = models.IntegerField(default = None)
     price = models.IntegerField()
     

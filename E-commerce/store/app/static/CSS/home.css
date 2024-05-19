@@ -5,7 +5,7 @@
     padding: 0px 50px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    column-gap: 73px;
 }
 .card{
     margin: 15px 0px;
@@ -34,7 +34,20 @@
     align-items: center;
     padding: 0px 5px 0px 20px;
 }
+.card-name a{
+    text-decoration: none;
+    color: black;
+}
 .footerbase{
-    width: 200px;
+    height: 100px;
+    width: 100%;
     background: rgb(6, 172, 255);
+    direction: rtl;
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 30px;
+}
+.footerbase p{
+    font-weight: bold;
+    margin: 25px;
 }

@@ -4,8 +4,25 @@
 {% block title %} {{product.p_name}} {% endblock title %}
 
 {% block content %}
-    <h1>{{product.p_name}}</h1>
-    <h1>{{product.company}}</h1>
+{% block stylesheets %}
+    <link rel = 'stylesheet' href = "{% static 'CSS/product.css' %}">
+{% endblock stylesheets %}
+    <div class='product-base'>
+        <div>
+            <h1>Name: {{product.p_name}}</h1>
+            <h1>Company: {{product.company}}</h1>
+            <h1>Price: {{product.price}}</h1>
+            <div class='product-btn'>
+                <form method='post'>{% csrf_token %}
+                    <button type=submit name='dataproduct' value="{{product.id}}">ADD TO CART</button>
+                </form>
+                <form method='post' action="/update">{% csrf_token %}
+                    <button type=submit name='dataproduct' value="{{product.id}}">Update</button>
+                </form>
+            </div>
+            
+        </div>
+        <img src = "{% static '/image/demo.png' %}" width=500 height=300 alt="product image"/>
+    </div>
     
-    <img src = "{% static '/image/demo.png' %}" width=500 height=300 alt="product image"/>
 {% endblock content %}

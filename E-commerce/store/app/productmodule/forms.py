@@ -13,15 +13,14 @@ class customersForm(forms.ModelForm):
     
     username = forms.CharField(max_length = 20, widget=forms.TextInput(attrs={'class': 'addproduct-input'}))
     email = forms.CharField(max_length = 50, widget=forms.TextInput(attrs={'class': 'addproduct-input'}))
-    password = forms.CharField(max_length = 20, widget=forms.TextInput(attrs={'class': 'addproduct-input'}))
+    password = forms.CharField(max_length = 20, widget=forms.PasswordInput(attrs={'class': 'addproduct-input'}))
     
 class productsForm(forms.ModelForm):
     class Meta:
         model = products
-        fields = ['id','p_name','company','p_count','price']
+        fields = ['p_name','company','p_count','price']
         
-    id = forms.IntegerField(required = True, widget=forms.NumberInput(attrs={'class': 'addproduct-input'}))
-    p_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'addproduct-input'}), max_length=20)
+    p_name = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'addproduct-input'}))
     company = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'addproduct-input'}))
     
     p_count = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'addproduct-input'}))

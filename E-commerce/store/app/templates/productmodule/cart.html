@@ -20,13 +20,16 @@
         </div>
         {%for p in product%}
         <div class='cart-card'>
-            <p class='cart-card-content'>{{p.p_name}}</p>
+            <a href="{% url 'product' id=p.p_id %}"><p class='cart-card-content'>{{p.p_name}}</p></a>
             <p class='cart-card-content'>{{p.p_count}}</p>
             <p class='cart-card-content'>{{p.price}}</p> 
             <form method='post'>{% csrf_token %}
                 <button name='dataproduct' value="{{p.id}}" class='cart-card-content' type=submit>DELETE</button>
-            </form>         
+            </form>     
         </div>
         {% endfor %}
+        <form action='deletecart'>{% csrf_token %}
+            <button class='cart-btn' type=submit>PAY</button>
+        </form> 
     </div>
 {% endblock content%}

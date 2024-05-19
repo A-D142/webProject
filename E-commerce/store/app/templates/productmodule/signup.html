@@ -4,21 +4,11 @@
 
 {% block content %}
 {% block stylesheet %}
-    <link rel = 'stylesheet' href = "{% static 'CSS/addproduct.css' %}">
+    <link rel = 'stylesheet' href = "{% static 'CSS/formstyle.css' %}">
 {% endblock stylesheet %}
-    <form method='post'>{% csrf_token %}
-        <label>First Name</label>
-        <input type='text' name='f_name'><br>
-        <label>Last Name</label>
-        <input type='text' name='l_name'><br>
-        <label>Phone</label>
-        <input type='number' name='phone'><br>
-        <label>username</label>
-        <input type='text' name='username'><br>
-        <label>E-mail</label>
-        <input type='email' name='email'><br>
-        <label>password</label>
-        <input type='password' name='password'><br>
-        <input type='submit'>
+    <form class='addproduct-base' method='post'>{% csrf_token %}
+        <h1>Please Register!</h1>
+        {{form}}
+        <button>Submit</button>
     </form>
 {% endblock content %}

@@ -17,7 +17,7 @@
             <div class='card-info'>
                 <div class='card-name'>
                     <p>{{p.company}}</p>
-                    <h3>{{p.p_name}}</h3>
+                    <a href="{% url 'product' id=p.id %}"><h3>{{p.p_name}}</h3></a>
                 </div>
                 <form method='post'>{% csrf_token %}
                     <button type=submit name='dataproduct' value="{{p.id}}"><img class='card-cart' src="{% static '/image/cart.png' %}"/></button>

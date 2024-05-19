@@ -4,11 +4,15 @@ from .forms import customersForm, productsForm
 
 def home(request):
     if request.method == 'POST':
-        pid = request.POST.get("dataproduct", "")
-        obj = products.objects.get(id = pid)
-        data = carts(p_name = obj.p_name, p_count = 1, price = obj.price)
-        data.save()
-    return render(request, 'productmodule/home.html', {'product': __getproduct()})
+        addtocart(request)
+    product = products.objects.all()
+    return render(request, 'productmodule/home.html', {'product': product})
+
+def addtocart(request):
+    pid = request.POST.get("dataproduct", "")
+    obj = products.objects.get(id = pid)
+    data = carts(p_name = obj.p_name, p_count = 1, price = obj.price, p_id = obj.id)
+    data.save()
 
 def cart(request):
     if request.method == 'POST':
@@ -17,6 +21,12 @@ def cart(request):
         obj.delete()
     obj = carts.objects.all() 
     return render(request, 'productmodule/cart.html',{'product': obj})
+
+def deletecart(request):
+    obj = carts.objects.all()
+    for o in obj:
+        o.delete()
+    return redirect('cart')
 
 def login(request):
     if request.method == 'POST':
@@ -34,7 +44,8 @@ def login(request):
                 return redirect('login')
         except customers.DoesNotExist:
             return redirect('signup')
-    return render(request, 'productmodule/login.html')
+    form = customersForm(None)
+    return render(request, 'productmodule/login.html', {'form':form})
 
 def signup(request):
     if request.method == 'POST':
@@ -43,7 +54,7 @@ def signup(request):
             obj = form.save()
             return redirect('login')
     form = customersForm(None)
-    return render(request, 'productmodule/signup.html')
+    return render(request, 'productmodule/signup.html', {'form':form})
 
 def addproduct(request):
     if request.method == 'POST':
@@ -55,13 +66,11 @@ def addproduct(request):
     return render(request, 'productmodule/addProduct.html', {'form':form})
 
 def product(request, id):
-    products = __getproduct()
-    product = None
-    for p in products:
-        if p.id == id:
-            product = p
-    context = {'product':product}    
-    return render(request, 'productmodule/product.html', context)
+    if request.method == 'POST':
+        addtocart(request)
+        redirect('home')
+    product = products.objects.get(id = id)    
+    return render(request, 'productmodule/product.html', {'product':product})
 
 def updateproduct(request, id):
     obj = products.objects.get(id = id)
@@ -71,8 +80,8 @@ def updateproduct(request, id):
             obj.save()
             return redirect('product', id = obj.id)
     form = productsForm(instance=obj)        
-    return render(request, 'productmodule/updateproduct.html', {'form':form})         
+    return render(request, 'productmodule/updateproduct.html', {'form':form})
 
-def __getproduct():
-    allproducts = products.objects.all()
-    return allproducts
+def update(request):
+    pid = request.POST.get("dataproduct", "")
+    return redirect('updateproduct/'+pid)
