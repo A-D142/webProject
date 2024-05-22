@@ -15,6 +15,7 @@ class products(models.Model):
     company = models.CharField(max_length = 20)
     p_count = models.IntegerField()
     price = models.IntegerField()
+    p_image = models.ImageField(null=True, blank=True, upload_to="image/")
     
     
 class carts(models.Model):
@@ -23,4 +24,5 @@ class carts(models.Model):
     p_name = models.CharField(max_length = 20)
     p_count = models.IntegerField(default = None)
     price = models.IntegerField()
+    p_img = models.ImageField(null=True, blank=True)
     

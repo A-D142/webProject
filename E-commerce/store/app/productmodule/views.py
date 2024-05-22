@@ -11,7 +11,7 @@ def home(request):
 def addtocart(request):
     pid = request.POST.get("dataproduct", "")
     obj = products.objects.get(id = pid)
-    data = carts(p_name = obj.p_name, p_count = 1, price = obj.price, p_id = obj.id)
+    data = carts(p_name = obj.p_name, p_count = 1, price = obj.price, p_id = obj.id, p_img = obj.p_image)
     data.save()
 
 def cart(request):
@@ -19,7 +19,7 @@ def cart(request):
         pid = request.POST.get("dataproduct", "")
         obj = carts.objects.get(id = pid)
         obj.delete()
-    obj = carts.objects.all() 
+    obj = carts.objects.all()
     return render(request, 'productmodule/cart.html',{'product': obj})
 
 def deletecart(request):
@@ -58,7 +58,7 @@ def signup(request):
 
 def addproduct(request):
     if request.method == 'POST':
-        form = productsForm(request.POST)
+        form = productsForm(request.POST, request.FILES)
         if form.is_valid:
             obj = form.save()
             return redirect('addproduct')
@@ -75,9 +75,9 @@ def product(request, id):
 def updateproduct(request, id):
     obj = products.objects.get(id = id)
     if request.method == 'POST':
-        form = productsForm(request.POST, instance=obj)
+        form = productsForm(request.POST, request.FILES, instance=obj)
         if form.is_valid():
-            obj.save()
+            obj.save()git
             return redirect('product', id = obj.id)
     form = productsForm(instance=obj)        
     return render(request, 'productmodule/updateproduct.html', {'form':form})
@@ -85,3 +85,10 @@ def updateproduct(request, id):
 def update(request):
     pid = request.POST.get("dataproduct", "")
     return redirect('updateproduct/'+pid)
+
+def deleteproduct(request):
+    if request.method == 'POST':
+        pid = request.POST.get("dataproduct", "")
+        obj = products.objects.get(id = pid)
+        obj.delete()
+    return redirect('home')

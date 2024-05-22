@@ -14,6 +14,7 @@
                 <p class='cart-card-content'>Products</p>
                 <p class='cart-card-content'>Count</p>
                 <p class='cart-card-content'>Price</p>
+                <p class='cart-card-content'>Image</p>
                 <p class='cart-card-content'></p>
             </div>
              
@@ -22,7 +23,14 @@
         <div class='cart-card'>
             <a href="{% url 'product' id=p.p_id %}"><p class='cart-card-content'>{{p.p_name}}</p></a>
             <p class='cart-card-content'>{{p.p_count}}</p>
-            <p class='cart-card-content'>{{p.price}}</p> 
+            <p class='cart-card-content'>{{p.price}}</p>
+            <div class='cart-card-content'>
+                {% if p.p_img %}
+                <img src = "{{ p.p_img.url }}" height=47 alt="product image"/>
+                {% else %}
+                <img src="{% static '/image/demo.png' %}" height=47 />
+                {% endif %} 
+            </div>
             <form method='post'>{% csrf_token %}
                 <button name='dataproduct' value="{{p.id}}" class='cart-card-content' type=submit>DELETE</button>
             </form>     

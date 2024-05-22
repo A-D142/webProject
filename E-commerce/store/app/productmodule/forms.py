@@ -18,7 +18,7 @@ class customersForm(forms.ModelForm):
 class productsForm(forms.ModelForm):
     class Meta:
         model = products
-        fields = ['p_name','company','p_count','price']
+        fields = ['p_name','company','p_count','price', 'p_image']
         
     p_name = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'addproduct-input'}))
     company = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'addproduct-input'}))
@@ -26,4 +26,5 @@ class productsForm(forms.ModelForm):
     p_count = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'addproduct-input'}))
     price = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'addproduct-input'}))
    
+    p_image = forms.ImageField(required=None)
 

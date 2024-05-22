@@ -13,7 +13,13 @@
     <div class='products-cards'>
         {% for p in product%}
         <div class='card'>
-            <img class='card-img' src="{% static '/image/demo.png' %}" />
+            <div>
+                {% if p.p_image %}
+                <img class='card-img' src="{{ p.p_image.url }}"/>
+                {% else %}
+                <img class='card-img' src="{% static '/image/demo.png' %}" />
+                {% endif %}
+            </div>
             <div class='card-info'>
                 <div class='card-name'>
                     <p>{{p.company}}</p>

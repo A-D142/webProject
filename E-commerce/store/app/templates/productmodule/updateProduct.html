@@ -6,7 +6,7 @@
 {% block stylesheet %}
     <link rel = 'stylesheet' href = "{% static 'CSS/formstyle.css' %}">
 {% endblock stylesheet %}
-    <form method='post' class='addproduct-base'>{% csrf_token %}
+    <form method='post' class='addproduct-base' enctype='multipart/form-data'>{% csrf_token %}
         <h1>Please Update Product!</h1>
         {{form}}
         <button>submit</button>

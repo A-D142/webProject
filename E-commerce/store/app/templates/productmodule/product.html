@@ -19,10 +19,19 @@
                 <form method='post' action="/update">{% csrf_token %}
                     <button type=submit name='dataproduct' value="{{product.id}}">Update</button>
                 </form>
+                <form method='post' action="/deleteproduct">{% csrf_token %}
+                    <button type=submit name='dataproduct' value="{{product.id}}" style ='background-color: red;'>DELETE</button>
+                </form>
             </div>
             
         </div>
-        <img src = "{% static '/image/demo.png' %}" width=500 height=300 alt="product image"/>
+        <div class='product-img'>
+        {% if product.p_image %}
+        <img class='product-img' src = "{{ product.p_image.url }}" alt="product image"/>
+        {% else %}
+        <img class='product-img' src="{% static '/image/demo.png' %}" />
+        {% endif %}
+        </div>
     </div>
     
 {% endblock content %}
